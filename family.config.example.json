@@ -1,0 +1,26 @@
+{
+  "adults": "Jordan, Alex",
+  "kids": "Sam",
+  "colors": "Sam:#f472b6",
+  "commuter": "Alex",
+  "homeAddress": "",
+  "bedtime": { "people": "Jordan, Alex", "nightsEach": "2", "startDate": "2026-09-01", "startsWith": "Jordan" },
+  "schoolChild": "Sam",
+  "school": {
+    "name": "Maple Elementary",
+    "firstDay": "2026-08-31",
+    "lastDay": "2027-06-22",
+    "offDays": "2026-12-21..2027-01-04, 2027-03-01..2027-03-05",
+    "cycleLength": "5",
+    "leaveLabel": "Bus",
+    "leaveTime": "08:05",
+    "closureUrl": ""
+  },
+  "stores": "Grocery, Warehouse, Pharmacy",
+  "pets": "Dog, Cat",
+  "pickups": "Trash: Wed every 2 weeks from 2026-09-16, Recycling: Wed every 2 weeks from 2026-09-23",
+  "choreReward": "Movie night",
+  "grimmoryUrl": "",
+  "nhlTeam": "",
+  "language": "en"
+}

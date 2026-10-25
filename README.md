@@ -64,6 +64,24 @@ Home Assistant, and several have Vitest suites for their date and rotation logic
 | [Screen Tabs](plugins/screen-tabs/) | A row of big buttons to jump between screens — Home, each person, Planning, Shopping, News. |
 | [Return to Home](plugins/return-home/) | Invisible helper: after a few minutes untouched, go back to Home — or in lock mode, keep guests on one screen (touching the wall bounces back) while a resident changing screens from their phone ends guest mode. |
 
+## Setup wizard
+
+The plugins ship with placeholder names and dates. Run the wizard once to fill in your own:
+
+```sh
+npm run setup            # asks about your family, school, stores, pets and team
+npm run setup -- --build # same, then builds every plugin
+npm run setup -- --from family.config.example.json   # no questions, use a saved file
+```
+
+It asks each question once (adults, kids, whose commute, the bedtime rotation, school dates and
+closures page, stores, pets, bin pickups, NHL team) and writes the answers into the default
+settings of every plugin that uses them, so the names and colours match across the wall. Answers
+are saved to `family.config.json` (ignored by git) and offered as defaults next time. API tokens
+and logins are never asked for here: enter those in the Home Screens editor.
+
+The mapping lives in `setup/apply.mjs` and is tested with `npm test` (Node 18+, no dependencies).
+
 ## Building
 
 Every plugin builds on its own:
@@ -81,7 +99,7 @@ the package.
 ## Notes
 
 - The names in default settings (Sam, Alex, Jordan) and URLs such as `homebase.example.com` are
-  placeholders. Change them in each plugin's settings.
+  placeholders. Replace them with `npm run setup`, or per plugin in the Home Screens editor.
 - `home-assistant` is a fork of
   [home-screens/home-screens-plugin-home-assistant](https://github.com/home-screens/home-screens-plugin-home-assistant)
   v1.9.0 (MIT) with a reworked Buttons view. See its README.

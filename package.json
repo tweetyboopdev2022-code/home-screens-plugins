@@ -1,0 +1,13 @@
+{
+  "name": "home-screens-plugins",
+  "private": true,
+  "type": "module",
+  "description": "Home Screens plugins for a family wall display",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "setup": "node setup/setup.mjs",
+    "build": "for d in plugins/*/; do (cd \"$d\" && ([ -f package-lock.json ] && npm ci || npm install) && npm run build) || exit 1; done",
+    "test": "node --test setup/apply.test.mjs"
+  }
+}
