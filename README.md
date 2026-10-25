@@ -80,6 +80,10 @@ settings of every plugin that uses them, so the names and colours match across t
 are saved to `family.config.json` (ignored by git) and offered as defaults next time. API tokens
 and logins are never asked for here: enter those in the Home Screens editor.
 
+Prefer a form? `setup/index.html` is the same wizard as a web page with a live preview of the
+wall. Serve the folder (`npx serve setup`, or GitHub Pages) since it loads `apply.mjs` as a module,
+fill it in, download `family.config.json`, then run `npm run setup -- --from family.config.json`.
+
 The mapping lives in `setup/apply.mjs` and is tested with `npm test` (Node 18+, no dependencies).
 
 ## Building

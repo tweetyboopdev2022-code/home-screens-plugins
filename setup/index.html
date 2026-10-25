@@ -1,0 +1,272 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body>
+<title>Wall Setup Wizard</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: form on the left, a sticky "your wall" panel on the right that mirrors the kitchen screen; stacks on phones. */
+:root {
+  --bg: #f3f4f1;
+  --panel: #ffffff;
+  --ink: #1d2320;
+  --muted: #5f6b65;
+  --line: #d9ddd8;
+  --wall: #1c2226;
+  --wall-ink: #eef1ee;
+  --accent: #b45309;
+  --accent-soft: #fbe9d3;
+  --focus: #2563eb;
+  --ok: #15803d;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141917; --panel: #1c2220; --ink: #e8ece9; --muted: #9aa69f; --line: #2e3633;
+    --wall: #0b0e10; --wall-ink: #eef1ee; --accent: #f5a54a; --accent-soft: #3a2a17; --focus: #7aa7ff; --ok: #4ade80;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #141917; --panel: #1c2220; --ink: #e8ece9; --muted: #9aa69f; --line: #2e3633;
+  --wall: #0b0e10; --wall-ink: #eef1ee; --accent: #f5a54a; --accent-soft: #3a2a17; --focus: #7aa7ff; --ok: #4ade80;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.5 var(--body); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { display: grid; gap: 8px; margin-bottom: 28px; max-width: 68ch; }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h1 { font: 700 clamp(30px, 5vw, 46px)/1.05 var(--display); margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+header p { margin: 0; color: var(--muted); }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 440px); gap: 32px; align-items: start; }
+@media (max-width: 900px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+form { display: grid; gap: 20px; min-width: 0; }
+fieldset { border: 1px solid var(--line); border-radius: 14px; background: var(--panel); padding: 20px; margin: 0; display: grid; gap: 14px; min-width: 0; }
+legend { font: 700 20px/1 var(--display); padding: 0 6px; margin-left: -6px; }
+.hint { font-size: 14px; color: var(--muted); margin: -6px 0 0; }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+label { display: grid; gap: 6px; font-weight: 700; font-size: 14px; min-width: 0; }
+label small { font-weight: 400; color: var(--muted); }
+input, select { font: 16px/1.3 var(--body); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; padding: 10px 12px; width: 100%; min-width: 0; }
+input:focus-visible, select:focus-visible, button:focus-visible, .file:focus-within { outline: 3px solid var(--focus); outline-offset: 2px; }
+.example { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; background: var(--accent-soft); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
+.example[hidden] { display: none !important; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+button, .file { font: 700 14px/1 var(--body); border-radius: 999px; padding: 11px 16px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] button.primary { color: #1a1206; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) button.primary { color: #1a1206; } }
+.file input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.file { position: relative; display: inline-flex; }
+aside { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); display: grid; gap: 16px; min-width: 0; }
+@media (max-width: 900px) { aside { position: static; } }
+.wall { background: var(--wall); color: var(--wall-ink); border-radius: 18px; padding: 18px; display: grid; gap: 14px; box-shadow: 0 1px 0 var(--line), 0 18px 40px -24px rgba(0,0,0,.45); }
+.wall h2 { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; margin: 0; opacity: .7; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tab { padding: 10px 14px; border-radius: 12px; font: 700 15px/1 var(--display); color: #16120c; }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.card { background: rgba(255,255,255,.07); border-radius: 12px; padding: 12px; display: grid; gap: 4px; min-width: 0; }
+.card b { font: 700 13px/1.2 var(--display); opacity: .7; }
+.card span { font-size: 15px; overflow-wrap: anywhere; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.panel h2 { font: 700 18px/1.1 var(--display); margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 12px/1 var(--mono); padding: 6px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--ink); }
+pre { margin: 0; font: 13px/1.5 var(--mono); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px; overflow: auto; max-height: 280px; }
+code { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+.status { font-size: 14px; color: var(--ok); min-height: 1.5em; margin: 0; }
+.steps { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+@media (prefers-reduced-motion: no-preference) { button, .tab { transition: transform .12s ease, background-color .2s; } button:active { transform: scale(.97); } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Home Screens plugins</span>
+    <h1>Set up your family wall</h1>
+    <p>Answer once and every plugin gets the same names, colours, school dates and stores. Nothing leaves this page: you download a small config file and run it with the plugins.</p>
+  </header>
+
+  <div class="grid">
+    <form id="wizard" autocomplete="off" novalidate>
+      <div class="example" id="exampleNote">
+        <span>These answers are an example family. Replace them with yours, or load a saved file.</span>
+        <div class="actions">
+          <button type="button" id="clearBtn">Start blank</button>
+          <label class="file"><input type="file" id="importFile" accept=".json,application/json">Load family.config.json</label>
+        </div>
+      </div>
+
+      <fieldset>
+        <legend>Family</legend>
+        <p class="hint">Names become the screen tabs and the colour code on calendars and chores.</p>
+        <div class="row">
+          <label for="adults">Adults <small>comma-separated</small><input id="adults" name="adults" placeholder="Jordan, Alex"></label>
+          <label for="kids">Kids <small>comma-separated</small><input id="kids" name="kids" placeholder="Sam"></label>
+        </div>
+        <div class="row">
+          <label for="colors">Custom colours <small>optional, e.g. Sam:#f472b6</small><input id="colors" name="colors"></label>
+          <label for="commuter">Whose commute and trips <small>defaults to the first adult</small><input id="commuter" name="commuter"></label>
+        </div>
+        <label for="homeAddress">Home address for drive times <small>optional</small><input id="homeAddress" name="homeAddress"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Bedtime rotation</legend>
+        <div class="row">
+          <label for="bedtime.people">Who takes turns <small>defaults to the adults</small><input id="bedtime.people" name="bedtime.people"></label>
+          <label for="bedtime.nightsEach">Nights each<input id="bedtime.nightsEach" name="bedtime.nightsEach" type="number" min="1" max="7" inputmode="numeric"></label>
+        </div>
+        <div class="row">
+          <label for="bedtime.startDate">Rotation starts on<input id="bedtime.startDate" name="bedtime.startDate" type="date"></label>
+          <label for="bedtime.startsWith">Whose turn that night<input id="bedtime.startsWith" name="bedtime.startsWith"></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>School</legend>
+        <div class="row">
+          <label for="schoolChild">Which kid the school plugins follow<input id="schoolChild" name="schoolChild"></label>
+          <label for="school.name">School name <small>used to spot closures</small><input id="school.name" name="school.name"></label>
+        </div>
+        <div class="row">
+          <label for="school.firstDay">First day of school<input id="school.firstDay" name="school.firstDay" type="date"></label>
+          <label for="school.lastDay">Last day of school<input id="school.lastDay" name="school.lastDay" type="date"></label>
+        </div>
+        <label for="school.offDays">Days off <small>dates or ranges, e.g. 2026-12-21..2027-01-04</small><input id="school.offDays" name="school.offDays"></label>
+        <div class="row">
+          <label for="school.cycleLength">Days in the class cycle <small>5 for Day 1–5</small><input id="school.cycleLength" name="school.cycleLength" type="number" min="1" max="10" inputmode="numeric"></label>
+          <label for="school.leaveLabel">Leaving for<input id="school.leaveLabel" name="school.leaveLabel" placeholder="Bus"></label>
+          <label for="school.leaveTime">Leave at<input id="school.leaveTime" name="school.leaveTime" type="time"></label>
+        </div>
+        <label for="school.closureUrl">School board's closures page <small>optional</small><input id="school.closureUrl" name="school.closureUrl" type="url" placeholder="https://"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Home</legend>
+        <div class="row">
+          <label for="stores">Stores you shop at <small>the first is the main one</small><input id="stores" name="stores"></label>
+          <label for="pets">Pets <small>Dog, Cat, Rabbit, Fish, Bird</small><input id="pets" name="pets"></label>
+        </div>
+        <label for="pickups">Bin pickups <small>e.g. Trash: Wed every 2 weeks from 2026-09-16</small><input id="pickups" name="pickups"></label>
+        <div class="row">
+          <label for="choreReward">Chore goal reward<input id="choreReward" name="choreReward"></label>
+          <label for="grimmoryUrl">Grimmory address <small>optional, for What We're Reading</small><input id="grimmoryUrl" name="grimmoryUrl" type="url" placeholder="https://"></label>
+        </div>
+        <div class="row">
+          <label for="nhlTeam">NHL team <small>3-letter code, optional</small><input id="nhlTeam" name="nhlTeam" maxlength="3" placeholder="TOR"></label>
+          <label for="language">Game info language
+            <select id="language" name="language"><option value="en">English</option><option value="fr">French</option><option value="both">Both</option></select>
+          </label>
+        </div>
+      </fieldset>
+    </form>
+
+    <aside aria-live="polite">
+      <section class="wall" aria-label="Preview of your wall">
+        <h2>Your wall</h2>
+        <div class="tabs" id="tabs"></div>
+        <div class="cards" id="cards"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Your config</h2>
+        <div class="chips" id="changed"></div>
+        <div class="actions">
+          <button type="button" class="primary" id="downloadBtn">Download family.config.json</button>
+          <button type="button" id="copyBtn">Copy</button>
+        </div>
+        <p class="status" id="status" role="status"></p>
+        <pre id="json" tabindex="0"></pre>
+        <ol class="steps">
+          <li>Save the file in the plugins folder.</li>
+          <li>Run <code>npm run setup -- --from family.config.json --build</code></li>
+          <li>Install the built plugins from the Home Screens editor. Tokens and logins go there too, never in this file.</li>
+        </ol>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<script type="module">
+import { plan, people } from './apply.mjs';
+
+const EXAMPLE = {
+  adults: 'Jordan, Alex', kids: 'Sam', colors: '', commuter: '', homeAddress: '',
+  bedtime: { people: '', nightsEach: '2', startDate: '2026-09-01', startsWith: '' },
+  schoolChild: '', school: { name: 'Maple Elementary', firstDay: '2026-08-31', lastDay: '2027-06-22', offDays: '2026-12-21..2027-01-04, 2027-03-01..2027-03-05', cycleLength: '5', leaveLabel: 'Bus', leaveTime: '08:05', closureUrl: '' },
+  stores: 'Grocery, Warehouse, Pharmacy', pets: 'Dog, Cat', pickups: 'Trash: Wed every 2 weeks from 2026-09-16', choreReward: 'Movie night', grimmoryUrl: '', nhlTeam: '', language: 'en',
+};
+const form = document.getElementById('wizard');
+const $ = (id) => document.getElementById(id);
+const fields = [...form.querySelectorAll('input[name], select[name]')];
+const getPath = (o, p) => p.split('.').reduce((a, k) => (a ?? {})[k], o);
+
+function fill(cfg) {
+  for (const el of fields) el.value = getPath(cfg, el.name) ?? (el.tagName === 'SELECT' ? 'en' : '');
+}
+function read() {
+  const cfg = { bedtime: {}, school: {} };
+  for (const el of fields) {
+    const [a, b] = el.name.split('.');
+    const v = el.value.trim();
+    if (b) cfg[a][b] = v; else cfg[a] = v;
+  }
+  return cfg;
+}
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function render() {
+  const cfg = read();
+  const p = plan(cfg);
+  const ps = people(cfg);
+  const tabs = [{ name: 'Home', color: '#f5c37e' }, ...ps, { name: 'Planning', color: '#60a5fa' }, { name: 'Shopping', color: '#4ade80' }, { name: 'News', color: '#fb923c' }];
+  $('tabs').innerHTML = tabs.map((t) => `<span class="tab" style="background:${esc(t.color)}">${esc(t.name)}</span>`).join('');
+  const sd = p['school-day']?.defaults ?? {};
+  const cards = [
+    ['Bedtime tonight', p['bedtime-turn']?.schema.anchorPerson || 'Not set'],
+    ['School day', sd.personName ? `${sd.personName} · Day 1 of ${sd.cycleLength || 5}` : 'Not set'],
+    ['Leave for school', p['leave-for-school'] ? `${p['leave-for-school'].defaults.label || 'Bus'} at ${p['leave-for-school'].defaults.departTime || '—'}` : 'Not set'],
+    ['Groceries', p['grocery-list']?.defaults.featuredStore || 'Not set'],
+    ['Chore stars', p['chore-stars'] ? `${p['chore-stars'].defaults.name || '—'} → ${p['chore-stars'].defaults.reward || 'reward'}` : 'Not set'],
+    ['Next game', p['next-game']?.defaults.team || 'Pick a team'],
+  ];
+  $('cards').innerHTML = cards.map(([k, v]) => `<div class="card"><b>${esc(k)}</b><span>${esc(v)}</span></div>`).join('');
+  const ids = Object.keys(p).sort();
+  $('changed').innerHTML = ids.length ? ids.map((i) => `<span class="chip">${esc(i)}</span>`).join('') : '<span class="hint">Fill in a few answers to see which plugins change.</span>';
+  $('json').textContent = JSON.stringify(cfg, null, 2);
+  try { localStorage.setItem('wall-setup-draft', JSON.stringify(cfg)); } catch {}
+  return cfg;
+}
+
+function status(msg) { $('status').textContent = msg; }
+
+let saved = null;
+try { saved = JSON.parse(localStorage.getItem('wall-setup-draft') || 'null'); } catch {}
+fill(saved ?? EXAMPLE);
+$('exampleNote').hidden = !!saved;
+render();
+
+form.addEventListener('input', () => { $('exampleNote').hidden = true; render(); status(''); });
+$('clearBtn').addEventListener('click', () => { fill({ bedtime: {}, school: {} }); $('exampleNote').hidden = true; render(); $('adults').focus(); });
+$('importFile').addEventListener('change', async (e) => {
+  const f = e.target.files?.[0]; if (!f) return;
+  try { fill(JSON.parse(await f.text())); render(); $('exampleNote').hidden = true; status(`Loaded ${f.name}.`); }
+  catch { status('That file isn’t valid JSON. Pick the family.config.json the setup wizard saved.'); }
+  e.target.value = '';
+});
+$('copyBtn').addEventListener('click', async () => {
+  const text = $('json').textContent;
+  try { await navigator.clipboard.writeText(text); status('Copied. Paste it into family.config.json in the plugins folder.'); }
+  catch { const r = document.createRange(); r.selectNodeContents($('json')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); status('Selected. Press Ctrl+C or ⌘C to copy.'); }
+});
+$('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(read(), null, 2) + '\n'], { type: 'application/json' });
+  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'family.config.json' });
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  status('If nothing downloaded, use Copy and save the text as family.config.json.');
+});
+</script>
+</body></html>
