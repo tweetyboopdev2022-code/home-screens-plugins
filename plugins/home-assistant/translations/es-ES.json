@@ -1,0 +1,368 @@
+{
+  "common": {
+    "unavailable": "No disponible",
+    "on": "Encendido",
+    "off": "Apagado"
+  },
+  "time": {
+    "justNow": "ahora mismo",
+    "secondsAgo": "hace {count} s",
+    "minutesAgo": "hace {count} min",
+    "hoursAgo": "hace {count} h",
+    "daysAgo": "hace {count} d",
+    "minutes": "{count} min",
+    "hours": "{count} h",
+    "days": "{count} d"
+  },
+  "status": {
+    "connecting": "Conectando…",
+    "connected": "Conectado",
+    "cantReach": "No se pudo conectar con Home Assistant: {error}"
+  },
+  "view": {
+    "entity": "Entidad",
+    "home": "Home Assistant",
+    "statusBoard": "Panel de estado",
+    "byArea": "Por zona",
+    "climate": "Clima",
+    "nowPlaying": "Sonando ahora",
+    "cameras": "Cámaras",
+    "buttons": "Botones",
+    "alerts": "Avisos",
+    "batteries": "Baterías",
+    "power": "Consumo",
+    "dashboard": "Panel",
+    "energyFlow": "Energía",
+    "timeline": "Hoy en casa"
+  },
+  "empty": {
+    "connect": "Conecta Home Assistant en los ajustes de este widget para empezar.",
+    "addButtons": "Añade algunos botones en los ajustes de este widget para empezar.",
+    "pickEntities": "Aún no hay entidades seleccionadas. Elige algunas en los ajustes del módulo.",
+    "pickEntity": "Elige una entidad en los ajustes del módulo.",
+    "pickClimate": "Elige una entidad de clima en los ajustes del módulo.",
+    "pickMediaPlayer": "Elige un reproductor multimedia en los ajustes del módulo.",
+    "pickPowerSensor": "Elige un sensor de consumo en los ajustes del módulo.",
+    "noCameras": "No hay cámaras seleccionadas.",
+    "noBatteries": "No se encontraron niveles de batería. Home Assistant los reporta para móviles, sensores de puerta, mandos y similares.",
+    "noAreas": "Home Assistant aún no tiene áreas con entidades. Asigna habitaciones a tus dispositivos o elige entidades en la configuración del módulo."
+  },
+  "card": {
+    "alert": "aviso",
+    "target": "objetivo {temp}°",
+    "percentOpen": "{percent}% abierto",
+    "warm": "Cálido · {kelvin} K",
+    "activate": "Activar",
+    "scene": "Escena",
+    "dayWindow": "24 h"
+  },
+  "cover": {
+    "open": "Abierto",
+    "closed": "Cerrado",
+    "opening": "Abriendo…",
+    "closing": "Cerrando…"
+  },
+  "vacuum": {
+    "cleaning": "Limpiando",
+    "mowing": "Cortando",
+    "docked": "En la base",
+    "idle": "En espera",
+    "paused": "En pausa",
+    "returning": "Volviendo",
+    "error": "Necesita ayuda",
+    "battery": "{percent}% de batería"
+  },
+  "climate": {
+    "tapToAdjust": "Toca para ajustar"
+  },
+  "hero": {
+    "holdForControls": "Mantener pulsado para controlar",
+    "tapForControls": "Toca para controlar"
+  },
+  "board": {
+    "active": "{count} activos"
+  },
+  "room": {
+    "oneEntity": "1 entidad",
+    "entityCount": "{count} entidades",
+    "other": "Otros"
+  },
+  "media": {
+    "playing": "Reproduciendo",
+    "previous": "Anterior",
+    "play": "Reproducir",
+    "pause": "Pausa",
+    "next": "Siguiente",
+    "volume": "Volumen"
+  },
+  "camera": {
+    "offline": "Cámara sin conexión",
+    "unavailable": "Cámara no disponible",
+    "noToken": "Sin token de acceso, revisa la entidad de la cámara",
+    "loading": "Cargando…"
+  },
+  "sheet": {
+    "brightness": "Brillo",
+    "warmth": "Temperatura de color",
+    "setTo": "Ajustar a",
+    "heatTo": "Calentar hasta",
+    "coolTo": "Enfriar hasta",
+    "mode": "Modo",
+    "position": "Posición",
+    "speed": "Velocidad",
+    "start": "Iniciar",
+    "startMowing": "Cortar",
+    "pause": "Pausa",
+    "dock": "A la base",
+    "locate": "Encontrarlo",
+    "suction": "Potencia",
+    "open": "Abrir",
+    "stop": "Parar",
+    "closeCover": "Cerrar",
+    "close": "Cerrar",
+    "turnOn": "Encender",
+    "turnOff": "Apagar",
+    "autoCloses": "Se cierra solo después de 15 segundos",
+    "lower": "{label}: bajar",
+    "raise": "{label}: subir",
+    "color": "Color"
+  },
+  "alerts": {
+    "more": "y {count} más",
+    "gotIt": "¡Entendido!",
+    "clearing": "quitando…",
+    "tapWhenDone": "Toca cuando esté hecho",
+    "waiting": "Esperando a Home Assistant",
+    "forMinutes": "desde hace {count} min",
+    "forHours": "desde hace {count} h",
+    "forDays": "desde hace {count} d"
+  },
+  "buttons": {
+    "done": "¡Hecho!",
+    "didntWork": "No funcionó",
+    "keepHolding": "Sigue pulsando…",
+    "holdToRun": "Mantén pulsado",
+    "tryAgain": "Inténtalo otra vez"
+  },
+  "lock": {
+    "holdToLock": "Mantén pulsado para cerrar",
+    "holdToUnlock": "Mantén pulsado para abrir",
+    "locked": "Cerrada",
+    "unlocked": "Abierta",
+    "jammed": "Atascada",
+    "locking": "Cerrando…",
+    "unlocking": "Abriendo…"
+  },
+  "batteries": {
+    "allCharged": "Todas cargadas",
+    "oneNeedsCharging": "1 necesita carga",
+    "needCharging": "{count} necesitan carga"
+  },
+  "power": {
+    "low": "Mínimo",
+    "average": "Media",
+    "high": "Máximo"
+  },
+  "provider": {
+    "cantReach": "No se puede conectar con Home Assistant"
+  },
+  "domain": {
+    "light": "Luces",
+    "switch": "Interruptores",
+    "sensor": "Sensores",
+    "binarySensor": "Sensores binarios",
+    "climate": "Clima",
+    "mediaPlayer": "Multimedia",
+    "cover": "Persianas",
+    "lock": "Cerraduras",
+    "person": "Personas",
+    "weather": "Tiempo",
+    "fan": "Ventiladores",
+    "camera": "Cámaras",
+    "scene": "Escenas",
+    "automation": "Automatizaciones",
+    "inputBoolean": "Conmutadores"
+  },
+  "person": {
+    "home": "En casa",
+    "away": "Fuera"
+  },
+  "hvacMode": {
+    "off": "Apagado",
+    "heat": "Calor",
+    "cool": "Frío",
+    "heatCool": "Frío/Calor",
+    "auto": "Automático",
+    "dry": "Secar",
+    "fanOnly": "Ventilador"
+  },
+  "hvacAction": {
+    "heating": "Calentando",
+    "cooling": "Enfriando",
+    "drying": "Secando",
+    "fan": "Ventilando",
+    "idle": "En espera",
+    "off": "Apagado",
+    "preheating": "Precalentando",
+    "defrosting": "Descongelando"
+  },
+  "binary": {
+    "open": "Abierta",
+    "closed": "Cerrada",
+    "locked": "Cerrada",
+    "unlocked": "Abierta",
+    "wet": "Mojado",
+    "dry": "Seco",
+    "motion": "Detectado",
+    "noMotion": "Sin movimiento",
+    "alert": "Alerta",
+    "clear": "Sin alerta",
+    "batteryLow": "Baja",
+    "batteryNormal": "Normal",
+    "online": "Conectado",
+    "offline": "Desconectado",
+    "plugged": "Enchufado",
+    "unplugged": "Desenchufado",
+    "problem": "Problema",
+    "ok": "OK",
+    "updateAvailable": "Disponible",
+    "upToDate": "Actualizado",
+    "running": "En marcha",
+    "stopped": "Parado"
+  },
+  "mediaState": {
+    "playing": "Reproduciendo",
+    "paused": "En pausa",
+    "idle": "En espera",
+    "off": "Apagado",
+    "standby": "En espera",
+    "buffering": "Cargando…"
+  },
+  "weather": {
+    "clearNight": "Despejado",
+    "cloudy": "Nublado",
+    "exceptional": "Excepcional",
+    "fog": "Niebla",
+    "hail": "Granizo",
+    "lightning": "Tormenta",
+    "lightningRainy": "Tormenta con lluvia",
+    "partlycloudy": "Parcialmente nublado",
+    "pouring": "Lluvia intensa",
+    "rainy": "Lluvia",
+    "snowy": "Nieve",
+    "snowyRainy": "Aguanieve",
+    "sunny": "Soleado",
+    "windy": "Viento"
+  },
+  "alarm": {
+    "disarmed": "Desactivada",
+    "armedHome": "Activada en casa",
+    "armedAway": "Activada fuera",
+    "armedNight": "Activada noche",
+    "armedVacation": "Activada vacaciones",
+    "arming": "Activando…",
+    "pending": "Pendiente…",
+    "triggered": "Disparada"
+  },
+  "dashboard": {
+    "home": "Casa",
+    "nHome": "{count} en casa",
+    "allLocked": "Todas las puertas cerradas",
+    "unlocked": "{name} sin cerrar",
+    "manyUnlocked": "{count} puertas sin cerrar",
+    "presence": "Movimiento",
+    "raise": "Subir",
+    "lower": "Bajar",
+    "todayRange": "Hoy {range}",
+    "tapToRun": "Toca para ejecutar"
+  },
+  "timeline": {
+    "activeNow": "activo ahora",
+    "activeOnce": "activo una vez",
+    "activeTimes": "activo {count} veces",
+    "arrivedAt": "{name} llegó a {zone}",
+    "atZone": "en {zone}",
+    "awayAllDay": "fuera todo el día",
+    "cameHome": "{name} llegó a casa",
+    "closed": "{name} cerrado",
+    "closedAllDay": "cerrado todo el día",
+    "docked": "{name} volvió a su base",
+    "driedOut": "{name} se secó",
+    "gotWet": "{name} se mojó",
+    "homeCount": "{count} en casa",
+    "homeFor": "en casa {duration}",
+    "hours": "{count} h",
+    "isNow": "{name} ahora está {state}",
+    "leftHome": "{name} salió de casa",
+    "loadFailed": "No se pudo cargar el historial de hoy.",
+    "loading": "Repasando el día...",
+    "locked": "{name} cerrado con llave",
+    "lockedAllDay": "cerrado todo el día",
+    "minutes": "{count} min",
+    "moreEarlier": "y {count} más antes",
+    "nothingChanged": "Nada ha cambiado en el último día.",
+    "nothingPlayed": "no se reprodujo nada",
+    "now": "Ahora",
+    "offAllDay": "apagado todo el día",
+    "oneThingHappened": "Hoy pasó 1 cosa",
+    "onFor": "encendido {duration}",
+    "opened": "{name} abierto",
+    "openedOnce": "abierto una vez",
+    "openedTimes": "abierto {count} veces",
+    "openNow": "abierto ahora",
+    "paused": "{name} en pausa",
+    "playingFor": "reproduciendo {duration}",
+    "quietAllDay": "tranquilo todo el día",
+    "runningFor": "en marcha {duration}",
+    "sawMovement": "{name} detectó movimiento",
+    "startedCleaning": "{name} empezó a limpiar",
+    "startedCooling": "{name} empezó a enfriar",
+    "startedHeating": "{name} empezó a calentar",
+    "startedPlaying": "{name} empezó a reproducir",
+    "stopped": "{name} se detuvo",
+    "thingsHappened": "Hoy pasaron {count} cosas",
+    "turnedOff": "{name} apagado",
+    "turnedOn": "{name} encendido",
+    "unlocked": "{name} abierto con llave",
+    "unlockedFor": "sin cerrar {duration}",
+    "wentIdle": "{name} quedó inactivo",
+    "wentQuiet": "{name} se quedó tranquilo"
+  },
+  "energy": {
+    "battery": "Batería",
+    "chargingWord": "cargando",
+    "dischargingWord": "descargando",
+    "estimatedWord": "estimado",
+    "exporting": "Exportando {watts}",
+    "exportingWord": "exportando",
+    "grid": "Red",
+    "home": "Casa",
+    "importing": "Importando {watts}",
+    "importingWord": "importando",
+    "onBattery": "Funcionando con batería",
+    "onSolar": "Funcionando con solar",
+    "pickSensors": "Elige tus sensores de potencia solar, red y batería para ver el flujo",
+    "quiet": "No pasa gran cosa",
+    "rightNow": "Ahora mismo",
+    "selfPowered": "Autoabastecido ahora",
+    "solar": "Solar",
+    "using": "Usando {watts}"
+  },
+  "light": {
+    "customColor": "Color personalizado",
+    "swatch": {
+      "warmWhite": "Blanco cálido",
+      "white": "Blanco",
+      "red": "Rojo",
+      "orange": "Naranja",
+      "green": "Verde",
+      "blue": "Azul",
+      "purple": "Morado"
+    },
+    "warmth": {
+      "warm": "Cálido",
+      "neutral": "Neutro",
+      "daylight": "Luz de día"
+    }
+  }
+}

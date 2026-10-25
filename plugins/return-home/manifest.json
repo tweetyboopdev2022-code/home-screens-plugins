@@ -1,0 +1,89 @@
+{
+  "id": "return-home",
+  "name": "Return to Home",
+  "version": "1.2.0",
+  "description": "Invisible helper: after a few minutes untouched, go back to Home \u2014 or in lock mode, keep guests on one screen (touching the wall bounces back) while a resident changing screens from their phone ends guest mode.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "return-home",
+  "category": "Utility",
+  "icon": "House",
+  "defaultConfig": {
+    "minutes": 10,
+    "screenIndex": 0,
+    "mode": "idle",
+    "screenName": "",
+    "releaseEntity": "input_boolean.guest_mode"
+  },
+  "defaultSize": {
+    "w": 60,
+    "h": 30
+  },
+  "defaultStyle": {
+    "fontSize": 12,
+    "padding": 0,
+    "borderRadius": 0,
+    "backgroundColor": "transparent",
+    "opacity": 1
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "mode": {
+        "type": "string",
+        "title": "Mode",
+        "enum": [
+          "idle",
+          "immediate"
+        ],
+        "enumLabels": [
+          "Go back after idle minutes",
+          "Lock: go back right away (use with a visibility rule)"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Content"
+      },
+      "minutes": {
+        "type": "number",
+        "title": "Go back after (minutes untouched)",
+        "minimum": 1,
+        "maximum": 60,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "screenIndex": {
+        "type": "number",
+        "title": "Go to screen number (0 = first)",
+        "minimum": 0,
+        "maximum": 20,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "screenName": {
+        "type": "string",
+        "title": "Go to screen (name)",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "e.g. Guests. Overrides the number below."
+      },
+      "releaseEntity": {
+        "type": "string",
+        "title": "Lock: Home Assistant switch to turn off",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Turned off when someone leaves the locked screen from their phone."
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "events"
+  ]
+}

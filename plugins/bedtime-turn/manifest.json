@@ -1,0 +1,123 @@
+{
+  "id": "bedtime-turn",
+  "name": "Bedtime Turn",
+  "version": "1.0.1",
+  "description": "Whose turn it is to do bedtime: a 2-nights-each rotation with the next few nights, and tap to swap tonight.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "bedtime-turn",
+  "category": "Family",
+  "icon": "Moon",
+  "defaultConfig": {
+    "view": "tonight",
+    "me": "",
+    "child": "",
+    "allowSwap": true,
+    "accentColor": "#7c3aed"
+  },
+  "defaultSize": {
+    "w": 480,
+    "h": 260
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "view": {
+        "type": "string",
+        "title": "Style",
+        "ui:group": "Content",
+        "ui:widget": "select",
+        "enum": [
+          "tonight",
+          "compact"
+        ],
+        "enumLabels": [
+          "Tonight + next nights",
+          "One line"
+        ]
+      },
+      "me": {
+        "type": "string",
+        "title": "Whose screen is this?",
+        "ui:group": "Content",
+        "ui:widget": "text",
+        "description": "Type Jordan or Alex to say “You're on tonight”. Leave empty for the family view."
+      },
+      "child": {
+        "type": "string",
+        "title": "Kid's view for",
+        "ui:group": "Content",
+        "ui:widget": "text",
+        "description": "Type Sam to say “Jordan is putting you to bed”."
+      },
+      "allowSwap": {
+        "type": "boolean",
+        "title": "Tap to swap tonight",
+        "ui:group": "Content",
+        "ui:widget": "toggle"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Fallback colour",
+        "ui:group": "Look",
+        "ui:widget": "color"
+      }
+    }
+  },
+  "settingsSchema": {
+    "type": "object",
+    "properties": {
+      "people": {
+        "type": "string",
+        "title": "People, in order",
+        "description": "Comma-separated, e.g. Jordan, Alex",
+        "default": "Jordan, Alex"
+      },
+      "nightsEach": {
+        "type": "number",
+        "title": "Nights in a row each",
+        "default": 2
+      },
+      "anchorDate": {
+        "type": "string",
+        "title": "A known night (YYYY-MM-DD)",
+        "default": "2026-09-29"
+      },
+      "anchorPerson": {
+        "type": "string",
+        "title": "…who was on that night",
+        "default": "Jordan"
+      },
+      "anchorNight": {
+        "type": "number",
+        "title": "…and which of their nights it was (1 or 2)",
+        "default": 1
+      },
+      "colors": {
+        "type": "string",
+        "title": "Colours",
+        "description": "Name:#colour, comma-separated",
+        "default": "Jordan:#b45309, Alex:#059669"
+      },
+      "swaps": {
+        "type": "string",
+        "title": "Swapped nights (managed by the block — leave as is)",
+        "default": "{}"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage"
+  ]
+}

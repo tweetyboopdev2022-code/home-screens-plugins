@@ -1,0 +1,368 @@
+{
+  "common": {
+    "unavailable": "Utilgængelig",
+    "on": "Tændt",
+    "off": "Slukket"
+  },
+  "time": {
+    "justNow": "lige nu",
+    "secondsAgo": "for {count} s siden",
+    "minutesAgo": "for {count} min siden",
+    "hoursAgo": "for {count} t siden",
+    "daysAgo": "for {count} d siden",
+    "minutes": "{count} min",
+    "hours": "{count} t",
+    "days": "{count} d"
+  },
+  "status": {
+    "connecting": "Forbinder…",
+    "connected": "Forbundet",
+    "cantReach": "Kunne ikke få fat i Home Assistant: {error}"
+  },
+  "view": {
+    "entity": "Enhed",
+    "home": "Home Assistant",
+    "statusBoard": "Statusoversigt",
+    "byArea": "Efter rum",
+    "climate": "Klima",
+    "nowPlaying": "Afspiller nu",
+    "cameras": "Kameraer",
+    "buttons": "Knapper",
+    "alerts": "Beskeder",
+    "batteries": "Batterier",
+    "power": "Forbrug",
+    "dashboard": "Dashboard",
+    "energyFlow": "Energi",
+    "timeline": "Hjemme i dag"
+  },
+  "empty": {
+    "connect": "Forbind Home Assistant i denne widgets indstillinger for at komme i gang.",
+    "addButtons": "Tilføj et par knapper i denne widgets indstillinger for at komme i gang.",
+    "pickEntities": "Ingen enheder valgt endnu. Vælg nogle i modulets indstillinger.",
+    "pickEntity": "Vælg en enhed i modulets indstillinger.",
+    "pickClimate": "Vælg en klimaenhed i modulets indstillinger.",
+    "pickMediaPlayer": "Vælg en medieafspiller i modulets indstillinger.",
+    "pickPowerSensor": "Vælg en forbrugssensor i modulets indstillinger.",
+    "noCameras": "Ingen kameraer valgt.",
+    "noBatteries": "Ingen batteriniveauer fundet. Home Assistant melder dem for telefoner, dørsensorer, fjernbetjeninger og lignende.",
+    "noAreas": "Home Assistant har endnu ingen områder med enheder. Giv dine enheder rum, eller vælg enheder i modulets opsætning."
+  },
+  "card": {
+    "alert": "besked",
+    "target": "mål {temp}°",
+    "percentOpen": "{percent}% åben",
+    "warm": "Varm · {kelvin} K",
+    "activate": "Aktivér",
+    "scene": "Scene",
+    "dayWindow": "24 t"
+  },
+  "cover": {
+    "open": "Åben",
+    "closed": "Lukket",
+    "opening": "Åbner…",
+    "closing": "Lukker…"
+  },
+  "vacuum": {
+    "cleaning": "Støvsuger",
+    "mowing": "Slår græs",
+    "docked": "I dock",
+    "idle": "Venter",
+    "paused": "På pause",
+    "returning": "På vej tilbage",
+    "error": "Har brug for hjælp",
+    "battery": "{percent}% batteri"
+  },
+  "climate": {
+    "tapToAdjust": "Tryk for at justere"
+  },
+  "hero": {
+    "holdForControls": "Hold nede for betjening",
+    "tapForControls": "Tryk for betjening"
+  },
+  "board": {
+    "active": "{count} aktive"
+  },
+  "room": {
+    "oneEntity": "1 enhed",
+    "entityCount": "{count} enheder",
+    "other": "Andet"
+  },
+  "media": {
+    "playing": "Afspiller",
+    "previous": "Forrige",
+    "play": "Afspil",
+    "pause": "Pause",
+    "next": "Næste",
+    "volume": "Lydstyrke"
+  },
+  "camera": {
+    "offline": "Kamera offline",
+    "unavailable": "Kamera utilgængeligt",
+    "noToken": "Ingen adgangstoken, tjek kameraenheden",
+    "loading": "Indlæser…"
+  },
+  "sheet": {
+    "brightness": "Lysstyrke",
+    "warmth": "Farvetemperatur",
+    "setTo": "Indstil til",
+    "heatTo": "Varm op til",
+    "coolTo": "Køl ned til",
+    "mode": "Tilstand",
+    "position": "Position",
+    "speed": "Hastighed",
+    "start": "Start",
+    "startMowing": "Slå græs",
+    "pause": "Pause",
+    "dock": "Send hjem",
+    "locate": "Find den",
+    "suction": "Sugestyrke",
+    "open": "Åbn",
+    "stop": "Stop",
+    "closeCover": "Luk",
+    "close": "Luk",
+    "turnOn": "Tænd",
+    "turnOff": "Sluk",
+    "autoCloses": "Lukker af sig selv efter 15 sekunder",
+    "lower": "{label}: sænk",
+    "raise": "{label}: hæv",
+    "color": "Farve"
+  },
+  "alerts": {
+    "more": "og {count} til",
+    "gotIt": "Forstået!",
+    "clearing": "fjerner…",
+    "tapWhenDone": "Tryk, når det er klaret",
+    "waiting": "Venter på Home Assistant",
+    "forMinutes": "i {count} min",
+    "forHours": "i {count} t",
+    "forDays": "i {count} d"
+  },
+  "buttons": {
+    "done": "Færdig!",
+    "didntWork": "Det virkede ikke",
+    "keepHolding": "Bliv ved med at holde…",
+    "holdToRun": "Hold nede for at starte",
+    "tryAgain": "Prøv igen"
+  },
+  "lock": {
+    "holdToLock": "Hold nede for at låse",
+    "holdToUnlock": "Hold nede for at låse op",
+    "locked": "Låst",
+    "unlocked": "Ulåst",
+    "jammed": "Blokeret",
+    "locking": "Låser…",
+    "unlocking": "Låser op…"
+  },
+  "batteries": {
+    "allCharged": "Alle er opladt",
+    "oneNeedsCharging": "1 skal lades op",
+    "needCharging": "{count} skal lades op"
+  },
+  "power": {
+    "low": "Lav",
+    "average": "Gennemsnit",
+    "high": "Høj"
+  },
+  "provider": {
+    "cantReach": "Kan ikke få forbindelse til Home Assistant"
+  },
+  "domain": {
+    "light": "Lys",
+    "switch": "Kontakter",
+    "sensor": "Sensorer",
+    "binarySensor": "Binære sensorer",
+    "climate": "Klima",
+    "mediaPlayer": "Medier",
+    "cover": "Gardiner",
+    "lock": "Låse",
+    "person": "Personer",
+    "weather": "Vejr",
+    "fan": "Ventilatorer",
+    "camera": "Kameraer",
+    "scene": "Scener",
+    "automation": "Automatiseringer",
+    "inputBoolean": "Kontakter"
+  },
+  "person": {
+    "home": "Hjemme",
+    "away": "Ude"
+  },
+  "hvacMode": {
+    "off": "Fra",
+    "heat": "Varme",
+    "cool": "Køl",
+    "heatCool": "Varme/køl",
+    "auto": "Auto",
+    "dry": "Affugt",
+    "fanOnly": "Ventilator"
+  },
+  "hvacAction": {
+    "heating": "Varmer",
+    "cooling": "Køler",
+    "drying": "Affugter",
+    "fan": "Ventilerer",
+    "idle": "Hviler",
+    "off": "Fra",
+    "preheating": "Forvarmer",
+    "defrosting": "Afrimer"
+  },
+  "binary": {
+    "open": "Åben",
+    "closed": "Lukket",
+    "locked": "Låst",
+    "unlocked": "Ulåst",
+    "wet": "Vådt",
+    "dry": "Tørt",
+    "motion": "Bevægelse",
+    "noMotion": "Intet",
+    "alert": "Alarm",
+    "clear": "Intet",
+    "batteryLow": "Lavt",
+    "batteryNormal": "Normalt",
+    "online": "Online",
+    "offline": "Offline",
+    "plugged": "Tilsluttet",
+    "unplugged": "Frakoblet",
+    "problem": "Problem",
+    "ok": "OK",
+    "updateAvailable": "Tilgængelig",
+    "upToDate": "Opdateret",
+    "running": "Kører",
+    "stopped": "Standset"
+  },
+  "mediaState": {
+    "playing": "Afspiller",
+    "paused": "På pause",
+    "idle": "Inaktiv",
+    "off": "Slukket",
+    "standby": "Standby",
+    "buffering": "Buffer…"
+  },
+  "weather": {
+    "clearNight": "Klart",
+    "cloudy": "Skyet",
+    "exceptional": "Ekstremt",
+    "fog": "Tåge",
+    "hail": "Hagl",
+    "lightning": "Torden",
+    "lightningRainy": "Tordenbyger",
+    "partlycloudy": "Delvist skyet",
+    "pouring": "Styrtregn",
+    "rainy": "Regn",
+    "snowy": "Sne",
+    "snowyRainy": "Slud",
+    "sunny": "Sol",
+    "windy": "Blæst"
+  },
+  "alarm": {
+    "disarmed": "Frakoblet",
+    "armedHome": "Tilkoblet hjemme",
+    "armedAway": "Tilkoblet ude",
+    "armedNight": "Tilkoblet nat",
+    "armedVacation": "Tilkoblet ferie",
+    "arming": "Tilkobler…",
+    "pending": "Afventer…",
+    "triggered": "Udløst"
+  },
+  "dashboard": {
+    "home": "Hjem",
+    "nHome": "{count} hjemme",
+    "allLocked": "Alle døre låst",
+    "unlocked": "{name} ulåst",
+    "manyUnlocked": "{count} døre ulåst",
+    "presence": "Bevægelse",
+    "raise": "Højere",
+    "lower": "Lavere",
+    "todayRange": "I dag {range}",
+    "tapToRun": "Tryk for at køre"
+  },
+  "timeline": {
+    "activeNow": "aktiv nu",
+    "activeOnce": "aktiv én gang",
+    "activeTimes": "aktiv {count} gange",
+    "arrivedAt": "{name} ankom til {zone}",
+    "atZone": "ved {zone}",
+    "awayAllDay": "væk hele dagen",
+    "cameHome": "{name} kom hjem",
+    "closed": "{name} lukket",
+    "closedAllDay": "lukket hele dagen",
+    "docked": "{name} kørte tilbage til basen",
+    "driedOut": "{name} er tør igen",
+    "gotWet": "{name} blev våd",
+    "homeCount": "{count} hjemme",
+    "homeFor": "hjemme {duration}",
+    "hours": "{count} t",
+    "isNow": "{name} er nu {state}",
+    "leftHome": "{name} forlod hjemmet",
+    "loadFailed": "Kunne ikke hente dagens historik.",
+    "loading": "Kigger tilbage på dagen...",
+    "locked": "{name} låst",
+    "lockedAllDay": "låst hele dagen",
+    "minutes": "{count} min",
+    "moreEarlier": "og {count} mere tidligere",
+    "nothingChanged": "Intet har ændret sig det seneste døgn.",
+    "nothingPlayed": "intet afspillet",
+    "now": "Nu",
+    "offAllDay": "slukket hele dagen",
+    "oneThingHappened": "1 ting skete i dag",
+    "onFor": "tændt {duration}",
+    "opened": "{name} åbnet",
+    "openedOnce": "åbnet én gang",
+    "openedTimes": "åbnet {count} gange",
+    "openNow": "åben nu",
+    "paused": "{name} sat på pause",
+    "playingFor": "afspiller {duration}",
+    "quietAllDay": "stille hele dagen",
+    "runningFor": "kører {duration}",
+    "sawMovement": "{name} registrerede bevægelse",
+    "startedCleaning": "{name} begyndte at gøre rent",
+    "startedCooling": "{name} begyndte at køle",
+    "startedHeating": "{name} begyndte at varme",
+    "startedPlaying": "{name} begyndte at afspille",
+    "stopped": "{name} stoppede",
+    "thingsHappened": "{count} ting skete i dag",
+    "turnedOff": "{name} slukket",
+    "turnedOn": "{name} tændt",
+    "unlocked": "{name} låst op",
+    "unlockedFor": "ulåst {duration}",
+    "wentIdle": "{name} gik i tomgang",
+    "wentQuiet": "{name} blev stille"
+  },
+  "energy": {
+    "battery": "Batteri",
+    "chargingWord": "oplader",
+    "dischargingWord": "aflader",
+    "estimatedWord": "anslået",
+    "exporting": "Eksporterer {watts}",
+    "exportingWord": "eksporterer",
+    "grid": "Elnet",
+    "home": "Hjem",
+    "importing": "Importerer {watts}",
+    "importingWord": "importerer",
+    "onBattery": "Kører på batteri",
+    "onSolar": "Kører på sol",
+    "pickSensors": "Vælg dine sol-, elnet- og batterisensorer for at se strømmen",
+    "quiet": "Ikke meget i gang",
+    "rightNow": "Lige nu",
+    "selfPowered": "Selvforsynet lige nu",
+    "solar": "Sol",
+    "using": "Bruger {watts}"
+  },
+  "light": {
+    "customColor": "Egen farve",
+    "swatch": {
+      "warmWhite": "Varm hvid",
+      "white": "Hvid",
+      "red": "Rød",
+      "orange": "Orange",
+      "green": "Grøn",
+      "blue": "Blå",
+      "purple": "Lilla"
+    },
+    "warmth": {
+      "warm": "Varm",
+      "neutral": "Neutral",
+      "daylight": "Dagslys"
+    }
+  }
+}

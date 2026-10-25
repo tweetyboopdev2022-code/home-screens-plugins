@@ -1,0 +1,74 @@
+{
+  "id": "wall-notes",
+  "name": "Wall Notes",
+  "version": "1.0.0",
+  "description": "Sticky notes from a Todoist project — post a note from your phone, tap it on the wall to take it down.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "wall-notes",
+  "category": "Family",
+  "icon": "StickyNote",
+  "defaultConfig": {
+    "projectName": "Wall notes",
+    "maxNotes": 6,
+    "accentColor": "#ca8a04"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 300
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "projectName": {
+        "type": "string",
+        "title": "Todoist project",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "maxNotes": {
+        "type": "number",
+        "title": "Most notes shown",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 1,
+        "maximum": 12,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "secrets",
+    "storage"
+  ],
+  "secrets": [
+    {
+      "key": "todoist_token",
+      "label": "Todoist API token",
+      "description": "Todoist → Settings → Integrations → Developer → API token.",
+      "required": true,
+      "placeholder": "Your Todoist API token"
+    }
+  ],
+  "allowedDomains": [
+    "api.todoist.com"
+  ]
+}

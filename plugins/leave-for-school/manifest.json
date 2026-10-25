@@ -1,0 +1,83 @@
+{
+  "id": "leave-for-school",
+  "name": "Leave for School",
+  "version": "1.0.0",
+  "description": "Weekday-morning countdown to the bus or school departure, turning amber then red as time runs out.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "leave-for-school",
+  "category": "Travel",
+  "icon": "Bell",
+  "defaultConfig": {
+    "label": "Bus",
+    "departTime": "08:05",
+    "showFrom": "06:30",
+    "days": "1,2,3,4,5",
+    "warnMinutes": 10,
+    "accentColor": "#db2777"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 300
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "label": {
+        "type": "string",
+        "title": "What you're leaving for",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "e.g. Bus, School, Carpool"
+      },
+      "departTime": {
+        "type": "string",
+        "title": "Leave at",
+        "ui:widget": "time",
+        "ui:group": "Content"
+      },
+      "showFrom": {
+        "type": "string",
+        "title": "Start countdown at",
+        "ui:widget": "time",
+        "ui:group": "Content"
+      },
+      "days": {
+        "type": "string",
+        "title": "School days",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "0=Sun … 6=Sat, comma-separated"
+      },
+      "warnMinutes": {
+        "type": "number",
+        "title": "Turn red at (minutes)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 2,
+        "maximum": 30,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage"
+  ]
+}

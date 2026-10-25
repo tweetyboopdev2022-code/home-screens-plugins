@@ -1,0 +1,166 @@
+{
+  "id": "smartthings",
+  "name": "SmartThings",
+  "version": "1.2.0",
+  "description": "Your SmartThings devices on the wall, grouped by room: lights and plugs, locks, doors and windows, motion and presence, temperature and thermostats, washer and dryer. Tap lights and plugs to switch them.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "smartthings",
+  "category": "Smart Home",
+  "icon": "House",
+  "defaultConfig": {
+    "title": "Home",
+    "devices": "",
+    "pollSeconds": 45,
+    "allowControl": true,
+    "showBattery": true,
+    "accentColor": "#0ea5e9",
+    "showOther": true
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 600
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "title": "Title",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "devices": {
+        "type": "string",
+        "title": "Show these devices",
+        "ui:widget": "textarea",
+        "ui:group": "Content",
+        "description": "One per line or comma-separated: device names or room names. Empty = everything."
+      },
+      "allowControl": {
+        "type": "boolean",
+        "title": "Tap to switch lights & plugs (and lock locks)",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "showBattery": {
+        "type": "boolean",
+        "title": "Warn about low batteries",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "pollSeconds": {
+        "type": "number",
+        "title": "Refresh every (seconds)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 20,
+        "maximum": 300,
+        "ui:step": 5
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "showOther": {
+        "type": "boolean",
+        "title": "Also show other devices (TVs, speakers, vacuums, leak & smoke sensors…)",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "secrets",
+    "oauth",
+    "storage"
+  ],
+  "allowedDomains": [
+    "api.smartthings.com"
+  ],
+  "providesState": [
+    {
+      "key": "any-motion",
+      "label": "Motion detected (any selected sensor)",
+      "sampleValues": [
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "key": "any-open",
+      "label": "A door or window is open",
+      "sampleValues": [
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "key": "anyone-home",
+      "label": "Someone is home (presence)",
+      "sampleValues": [
+        "yes",
+        "no"
+      ]
+    },
+    {
+      "key": "laundry-done",
+      "label": "Washer or dryer just finished",
+      "sampleValues": [
+        "yes",
+        "no"
+      ]
+    }
+  ],
+  "secrets": [
+    {
+      "key": "client_id",
+      "label": "SmartThings app Client ID",
+      "description": "From `smartthings apps:create` (OAuth-In App).",
+      "required": true,
+      "placeholder": "xxxxxxxx-xxxx-…"
+    },
+    {
+      "key": "client_secret",
+      "label": "SmartThings app Client Secret",
+      "description": "Shown once when the app is created.",
+      "required": true,
+      "placeholder": "xxxxxxxx-xxxx-…"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "flow": "authorization_code",
+    "authorizationUrl": "https://api.smartthings.com/oauth/authorize",
+    "tokenUrl": "https://api.smartthings.com/oauth/token",
+    "scopes": [
+      "r:devices:*",
+      "x:devices:*",
+      "r:locations:*"
+    ],
+    "pkce": false,
+    "clientAuthentication": "header",
+    "tokenPlacement": "header",
+    "tokenTargetDomains": [
+      "api.smartthings.com"
+    ],
+    "secrets": {
+      "clientId": "client_id",
+      "clientSecret": "client_secret"
+    }
+  }
+}

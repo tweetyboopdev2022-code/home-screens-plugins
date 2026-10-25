@@ -1,0 +1,83 @@
+{
+  "id": "screen-tabs",
+  "name": "Screen Tabs",
+  "version": "1.2.0",
+  "description": "A row of big buttons to jump between screens \u2014 Home, each person, Planning, Shopping, News.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "screen-tabs",
+  "category": "Utility",
+  "icon": "LayoutGrid",
+  "defaultConfig": {
+    "tabs": "Home, Alex, Sam, Jordan, Planning, Shopping, News",
+    "current": "",
+    "colors": "Home:#f5c37e, Alex:#34d399, Sam:#f472b6, Jordan:#fbbf24, Planning:#60a5fa, Shopping:#4ade80, News:#fb923c",
+    "accentColor": "#f5c37e",
+    "hideDots": true,
+    "scrollLists": true
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 64
+  },
+  "defaultStyle": {
+    "fontSize": 17,
+    "padding": 6,
+    "borderRadius": 999
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "tabs": {
+        "type": "string",
+        "title": "Tabs (screen names, in order)",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Comma-separated. Matches the start of each screen's name. Leave empty for an invisible block that only hides the dots."
+      },
+      "current": {
+        "type": "string",
+        "title": "This screen",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Which tab to highlight here, e.g. Sam."
+      },
+      "colors": {
+        "type": "string",
+        "title": "Tab colours",
+        "ui:widget": "text",
+        "ui:group": "Look",
+        "description": "Name:#hex pairs, comma-separated."
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Default colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "hideDots": {
+        "type": "boolean",
+        "title": "Hide the page dots",
+        "ui:widget": "toggle",
+        "ui:group": "Look",
+        "description": "The small dots at the bottom of the wall do the same job and also reach hidden screens like Guests."
+      },
+      "scrollLists": {
+        "type": "boolean",
+        "title": "Make Todoist lists scrollable",
+        "ui:widget": "toggle",
+        "ui:group": "Look",
+        "description": "Long to-do lists scroll with a finger instead of being cut off."
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "events"
+  ]
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+releases/
+.DS_Store
+*.local
+.home-assistant-dev/
+.claude/
+audit/
+e2e/.tmp/

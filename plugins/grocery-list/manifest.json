@@ -1,0 +1,168 @@
+{
+  "id": "grocery-list",
+  "name": "Grocery List",
+  "version": "1.7.2",
+  "description": "A Todoist project as a touch grocery list: tap to check off, \u00d7 to remove, add with the on-screen keyboard or 'Add again' chips. Filter by label to make one block per store (Grocery, Warehouse\u2026).",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "grocery-list",
+  "category": "Personal",
+  "icon": "ListChecks",
+  "defaultConfig": {
+    "title": "",
+    "projectName": "Groceries",
+    "staples": "Milk, Eggs, Bread, Bananas, Apples, Cheese, Yogurt, Butter, Coffee, Dog food, Cat litter",
+    "quickPicks": 8,
+    "accentColor": "#16a34a",
+    "refreshIntervalMs": 60000,
+    "labelFilter": "",
+    "includeUnlabelled": false,
+    "storeLabels": "Grocery, Warehouse, Pharmacy, Online, Other",
+    "groupByStore": false,
+    "storeColors": "Grocery:#16a34a, Warehouse:#e31837, Pharmacy:#0071ce, Online:#e47911, Other:#78716c",
+    "hideEmptyStores": false,
+    "featuredStore": "Grocery"
+  },
+  "defaultSize": {
+    "w": 490,
+    "h": 760
+  },
+  "defaultStyle": {
+    "fontSize": 28,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "title": {
+        "type": "string",
+        "title": "Title",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Leave empty to use the store label (or the project name)."
+      },
+      "projectName": {
+        "type": "string",
+        "title": "Todoist project",
+        "description": "Exact name of the Todoist project that holds the list.",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "labelFilter": {
+        "type": "string",
+        "title": "Only show labels",
+        "description": "Comma-separated Todoist labels, e.g. Grocery or Warehouse. Items added from this block get the first label. Leave empty to show the whole project.",
+        "ui:widget": "text",
+        "ui:placeholder": "Grocery",
+        "ui:group": "Content"
+      },
+      "includeUnlabelled": {
+        "type": "boolean",
+        "title": "Also show items with no label",
+        "description": "Handy for a catch-all block, e.g. the store you shop at most.",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "storeLabels": {
+        "type": "string",
+        "title": "Store choices",
+        "description": "Comma-separated store labels offered when adding an item. The block's own label is pre-selected.",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "staples": {
+        "type": "string",
+        "title": "Staples",
+        "description": "Comma-separated, optional store after @ \u2014 e.g. Milk@Grocery, Paper towels@Warehouse. Shown as one-tap Quick add buttons with things you've bought lately.",
+        "ui:widget": "textarea",
+        "ui:group": "Content"
+      },
+      "quickPicks": {
+        "type": "number",
+        "title": "How many 'Add again' chips",
+        "minimum": 0,
+        "maximum": 16,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "refreshIntervalMs": {
+        "type": "number",
+        "title": "Refresh (ms)",
+        "minimum": 30000,
+        "maximum": 600000,
+        "ui:widget": "slider",
+        "ui:step": 30000,
+        "ui:group": "Look"
+      },
+      "groupByStore": {
+        "type": "boolean",
+        "title": "Group by store",
+        "description": "Split the list into one section per store (from Store choices), each with its own Add button.",
+        "ui:group": "Content"
+      },
+      "storeColors": {
+        "type": "string",
+        "title": "Store colours",
+        "description": "Store:colour pairs for the section headings, e.g. Grocery:#16a34a, Warehouse:#e31837",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "ui:showWhen": {
+          "field": "groupByStore",
+          "equals": true
+        }
+      },
+      "hideEmptyStores": {
+        "type": "boolean",
+        "title": "Hide empty stores",
+        "description": "Leave out store sections with nothing on the list.",
+        "ui:group": "Content",
+        "ui:showWhen": {
+          "field": "groupByStore",
+          "equals": true
+        }
+      },
+      "featuredStore": {
+        "type": "string",
+        "title": "Double-height store",
+        "description": "This store is twice as tall as the others (two grid rows). Empty = all the same size.",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "ui:showWhen": {
+          "field": "groupByStore",
+          "equals": true
+        }
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "secrets": [
+    {
+      "key": "todoist_token",
+      "label": "Todoist API token",
+      "description": "Todoist \u2192 Settings \u2192 Integrations \u2192 Developer \u2192 API token.",
+      "required": true,
+      "placeholder": "Your Todoist API token"
+    }
+  ],
+  "allowedDomains": [
+    "api.todoist.com"
+  ],
+  "permissions": [
+    "network",
+    "secrets",
+    "storage"
+  ]
+}

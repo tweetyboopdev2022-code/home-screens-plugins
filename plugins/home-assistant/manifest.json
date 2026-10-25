@@ -1,0 +1,99 @@
+{
+  "id": "home-assistant",
+  "name": "Home Assistant",
+  "version": "1.9.1",
+  "description": "Beautiful entity cards, area grouping, and interactive controls for your Home Assistant instance. Lights, climate, media, covers, locks — no code, no templates.",
+  "author": "home-screens",
+  "license": "MIT",
+  "minAppVersion": "1.8.0",
+  "moduleType": "home-assistant",
+  "category": "Personal",
+  "icon": "Home",
+  "defaultConfig": {
+    "view": "card-grid",
+    "entities": [],
+    "area": null,
+    "refreshInterval": 30,
+    "showHeader": true,
+    "showRowDividers": true,
+    "showStatusDots": true,
+    "columns": 2,
+    "showControls": true,
+    "compactMode": false,
+    "fastUpdates": true,
+    "showHistory": false,
+    "buttons": [],
+    "alerts": [],
+    "lookRules": [],
+    "autoTones": true,
+    "heroColumn": false
+  },
+  "defaultSize": {
+    "w": 420,
+    "h": 520
+  },
+  "defaultStyle": {
+    "fontSize": 14,
+    "padding": 0,
+    "backgroundColor": "rgba(0, 0, 0, 0.35)",
+    "borderRadius": 16,
+    "backdropBlur": 6
+  },
+  "allowedDomains": [
+    "*"
+  ],
+  "permissions": [
+    "network",
+    "secrets",
+    "localNetwork",
+    "storage"
+  ],
+  "translations": {
+    "en-US": "translations/en-US.json",
+    "de-DE": "translations/de-DE.json",
+    "fr-FR": "translations/fr-FR.json",
+    "es-ES": "translations/es-ES.json",
+    "nl-NL": "translations/nl-NL.json",
+    "pt-BR": "translations/pt-BR.json",
+    "da-DK": "translations/da-DK.json"
+  },
+  "secrets": [
+    {
+      "key": "ha_token",
+      "label": "Long-Lived Access Token",
+      "description": "Create one in Home Assistant at Profile → Security → Long-Lived Access Tokens (bottom of the page). Valid for 10 years.",
+      "required": true,
+      "placeholder": "eyJhbGciOiJIUzI1NiIs..."
+    }
+  ],
+  "exports": {
+    "component": "default",
+    "configSection": "ConfigSection",
+    "stateProvider": "StateProvider"
+  },
+  "settingsSchema": {
+    "type": "object",
+    "properties": {
+      "haUrl": {
+        "type": "string",
+        "title": "Home Assistant URL",
+        "description": "One connection shared by every Home Assistant widget, condition search, and automatic state sharing.",
+        "ui:placeholder": "http://homeassistant.local:8123"
+      },
+      "fastUpdates": {
+        "type": "boolean",
+        "title": "Fast updates",
+        "description": "Check for state changes every couple of seconds so conditions react almost instantly.",
+        "default": true
+      },
+      "debugLogging": {
+        "type": "boolean",
+        "title": "Debug logging",
+        "description": "Log every published state change to the browser console.",
+        "default": false
+      }
+    }
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null
+}

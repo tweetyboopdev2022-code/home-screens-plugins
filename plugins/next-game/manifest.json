@@ -1,0 +1,71 @@
+{
+  "id": "next-game",
+  "name": "Next Game",
+  "version": "1.1.0",
+  "description": "When your NHL team plays next where to watch it in Canada, live score during the game, and the last result.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "next-game",
+  "category": "Sports",
+  "icon": "Trophy",
+  "defaultConfig": {
+    "team": "",
+    "language": "en",
+    "accentColor": "#2563eb"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 260
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "team": {
+        "type": "string",
+        "title": "Team (3-letter code)",
+        "description": "e.g. TOR, BOS, NYR, VAN, EDM",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "language": {
+        "type": "string",
+        "title": "Channels to show",
+        "enum": [
+          "both",
+          "en",
+          "fr"
+        ],
+        "enumLabels": [
+          "English and French",
+          "English only",
+          "French only"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Content"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "network"
+  ],
+  "allowedDomains": [
+    "api-web.nhle.com"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "chore-stars",
+  "name": "Stars",
+  "version": "1.3.2",
+  "description": "Stars for jobs ticked off in a Todoist project this week, a daily streak and a goal/reward \u2014 or a kid routine view (Morning / After school / Bedtime) where each tick earns a star.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "chore-stars",
+  "category": "Personal",
+  "icon": "Star",
+  "defaultConfig": {
+    "name": "Sam",
+    "projectName": "Sam",
+    "weeklyGoal": 15,
+    "reward": "Movie night",
+    "weekStart": 1,
+    "accentColor": "#db2777",
+    "view": "stars",
+    "morningUntil": 11,
+    "bedtimeFrom": 17
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 360
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "view": {
+        "type": "string",
+        "title": "View",
+        "enum": [
+          "stars",
+          "routine",
+          "both"
+        ],
+        "enumLabels": [
+          "Stars",
+          "Routine",
+          "Routine + stars"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Content"
+      },
+      "name": {
+        "type": "string",
+        "title": "Whose stars",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "projectName": {
+        "type": "string",
+        "title": "Todoist project",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "weeklyGoal": {
+        "type": "number",
+        "title": "Weekly goal",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 3,
+        "maximum": 40,
+        "ui:step": 1
+      },
+      "reward": {
+        "type": "string",
+        "title": "Reward",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "weekStart": {
+        "type": "number",
+        "title": "Week starts (0=Sun, 1=Mon)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 0,
+        "maximum": 1,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "morningUntil": {
+        "type": "number",
+        "title": "Morning routine until (hour)",
+        "minimum": 8,
+        "maximum": 13,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Routine"
+      },
+      "bedtimeFrom": {
+        "type": "number",
+        "title": "Bedtime routine from (hour)",
+        "minimum": 15,
+        "maximum": 21,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Routine"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "secrets",
+    "storage"
+  ],
+  "secrets": [
+    {
+      "key": "todoist_token",
+      "label": "Todoist API token",
+      "description": "Todoist \u2192 Settings \u2192 Integrations \u2192 Developer \u2192 API token.",
+      "required": true,
+      "placeholder": "Your Todoist API token"
+    }
+  ],
+  "allowedDomains": [
+    "api.todoist.com"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "school-lunch",
+  "name": "School Lunch",
+  "version": "1.1.1",
+  "description": "Today's school lunch from calendar events (e.g. 'School Lunch: Taco Bowl'); shows tomorrow's in the afternoon.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "school-lunch",
+  "category": "Personal",
+  "icon": "UtensilsCrossed",
+  "defaultConfig": {
+    "personName": "Sam",
+    "match": "lunch|dîner|diner",
+    "switchHour": 14,
+    "days": 5,
+    "accentColor": "#db2777"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 260
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "personName": {
+        "type": "string",
+        "title": "Whose calendar",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Person from Settings → Calendar → People. Empty = all calendars."
+      },
+      "match": {
+        "type": "string",
+        "title": "Event titles containing",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Regular expression, case-insensitive"
+      },
+      "switchHour": {
+        "type": "number",
+        "title": "Show tomorrow from (hour)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 10,
+        "maximum": 20,
+        "ui:step": 1
+      },
+      "days": {
+        "type": "number",
+        "title": "Days listed",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 1,
+        "maximum": 7,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [
+    "calendar"
+  ],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage"
+  ]
+}

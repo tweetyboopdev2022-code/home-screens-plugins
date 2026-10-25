@@ -1,0 +1,103 @@
+{
+  "id": "hero-header",
+  "name": "Hero Header",
+  "version": "1.2.1",
+  "description": "Big time, date and greeting with today's weather and the next event — one card for the top of a screen.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "hero-header",
+  "category": "Time & Date",
+  "icon": "Clock",
+  "defaultConfig": {
+    "name": "",
+    "personName": "",
+    "showWeather": true,
+    "weatherPopup": true,
+    "showNext": true,
+    "accentColor": "#b45309",
+    "layout": "auto"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 340
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Greeting name",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "e.g. Sam. Empty = just 'Good morning'."
+      },
+      "personName": {
+        "type": "string",
+        "title": "Next event from",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "A person from Settings → Calendar → People. Empty = everyone."
+      },
+      "showWeather": {
+        "type": "boolean",
+        "title": "Show weather",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "weatherPopup": {
+        "type": "boolean",
+        "title": "Tap weather for forecast",
+        "ui:widget": "toggle",
+        "ui:group": "Content",
+        "description": "Tapping the weather opens the next 24 hours and the week ahead."
+      },
+      "showNext": {
+        "type": "boolean",
+        "title": "Show next event",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "layout": {
+        "type": "string",
+        "title": "Layout",
+        "enum": [
+          "auto",
+          "tall",
+          "slim"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Look",
+        "description": "Auto goes slim (one band) when the block is short.",
+        "enumLabels": [
+          "Auto",
+          "Tall",
+          "Slim"
+        ]
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [
+    "calendar",
+    "weather",
+    "location"
+  ],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage"
+  ]
+}

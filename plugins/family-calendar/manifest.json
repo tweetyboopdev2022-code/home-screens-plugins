@@ -1,0 +1,126 @@
+{
+  "id": "family-calendar",
+  "name": "Family Calendar",
+  "version": "1.4.1",
+  "description": "Day columns or a month grid where event titles wrap. Weather on each date; tap a date to see the whole day with the weather where each event happens. 'Day N' school badges, icons, per-person colours and filter buttons.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "family-calendar",
+  "category": "Time & Date",
+  "icon": "Calendar",
+  "defaultConfig": {
+    "view": "columns",
+    "days": 5,
+    "weeks": 5,
+    "weekStart": 0,
+    "calendars": "",
+    "schoolDayBadge": true,
+    "showLegend": true,
+    "accentColor": "#f5c37e",
+    "showWeather": true
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 560
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 22,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "view": {
+        "type": "string",
+        "title": "View",
+        "enum": [
+          "columns",
+          "month"
+        ],
+        "enumLabels": [
+          "Day columns (from today)",
+          "Month grid"
+        ],
+        "ui:widget": "select",
+        "ui:group": "Content"
+      },
+      "days": {
+        "type": "number",
+        "title": "Day columns",
+        "minimum": 1,
+        "maximum": 14,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "weeks": {
+        "type": "number",
+        "title": "Weeks in the grid",
+        "minimum": 1,
+        "maximum": 6,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "weekStart": {
+        "type": "number",
+        "title": "Week starts (0=Sun, 1=Mon)",
+        "minimum": 0,
+        "maximum": 1,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "calendars": {
+        "type": "string",
+        "title": "Calendars to show",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "People from Settings \u2192 Calendar (e.g. Sam, Alex), plus family and holidays. Empty = all."
+      },
+      "schoolDayBadge": {
+        "type": "boolean",
+        "title": "Show 'Day N' school events as a badge",
+        "ui:widget": "toggle",
+        "ui:group": "Content"
+      },
+      "showLegend": {
+        "type": "boolean",
+        "title": "Show calendar filter buttons",
+        "ui:widget": "toggle",
+        "ui:group": "Look",
+        "description": "Tap a name to see only that person's calendar; goes back to all after 3 minutes."
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Today colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      },
+      "showWeather": {
+        "type": "boolean",
+        "title": "Show weather on dates",
+        "ui:widget": "toggle",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [
+    "location"
+  ],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage",
+    "network"
+  ],
+  "allowedDomains": [
+    "api.open-meteo.com",
+    "nominatim.openstreetmap.org",
+    "geocoding-api.open-meteo.com"
+  ]
+}

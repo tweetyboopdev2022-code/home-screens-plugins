@@ -1,0 +1,98 @@
+{
+  "id": "reading-now",
+  "name": "What We're Reading",
+  "version": "2.0.0",
+  "description": "Book covers of what each person is reading, from their own Grimmory — the books on each person's “Currently Reading” magic shelf, read through Grimmory's OPDS feed.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "reading-now",
+  "category": "Family",
+  "icon": "BookOpen",
+  "defaultConfig": {
+    "readers": "Jordan | https://homebase.example.com\nAlex | https://homebase.example.com\nSam | https://homebase.example.com",
+    "shelfName": "Currently Reading",
+    "booksPerReader": 1,
+    "accentColor": "#7c3aed"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 360
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "readers": {
+        "type": "string",
+        "title": "Readers",
+        "description": "One line each: Name | Grimmory address. Line 1 uses the Reader 1 secret, line 2 Reader 2, line 3 Reader 3.",
+        "ui:widget": "textarea",
+        "ui:group": "Content"
+      },
+      "shelfName": {
+        "type": "string",
+        "title": "Magic shelf name",
+        "description": "The magic shelf in each Grimmory (rule: Read status is Reading)",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "booksPerReader": {
+        "type": "number",
+        "title": "Books per reader",
+        "minimum": 1,
+        "maximum": 2,
+        "ui:widget": "slider",
+        "ui:step": 1,
+        "ui:group": "Content"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "localNetwork",
+    "secrets",
+    "storage"
+  ],
+  "secrets": [
+    {
+      "key": "reader1_login",
+      "label": "Reader 1 OPDS login (line 1 of Readers)",
+      "description": "Base64 of opds-username:password. On a Mac: printf 'user:password' | base64",
+      "required": true,
+      "placeholder": "dXNlcjpwYXNzd29yZA=="
+    },
+    {
+      "key": "reader2_login",
+      "label": "Reader 2 OPDS login (line 2 of Readers)",
+      "description": "Base64 of opds-username:password. On a Mac: printf 'user:password' | base64",
+      "required": false,
+      "placeholder": "dXNlcjpwYXNzd29yZA=="
+    },
+    {
+      "key": "reader3_login",
+      "label": "Reader 3 OPDS login (line 3 of Readers)",
+      "description": "Base64 of opds-username:password. On a Mac: printf 'user:password' | base64",
+      "required": false,
+      "placeholder": "dXNlcjpwYXNzd29yZA=="
+    }
+  ],
+  "allowedDomains": [
+    "*"
+  ]
+}

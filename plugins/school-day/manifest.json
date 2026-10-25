@@ -1,0 +1,166 @@
+{
+  "id": "school-day",
+  "name": "School Day",
+  "version": "1.1.3",
+  "description": "Today's or tomorrow's school cycle day (Day 1\u20135), the classes on it, what to bring, upcoming tests and library returns from the calendar, and storm-closure alerts.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "school-day",
+  "category": "Family",
+  "icon": "GraduationCap",
+  "defaultConfig": {
+    "personName": "Sam",
+    "schoolName": "",
+    "cycleLength": 5,
+    "anchorDate": "2026-08-31",
+    "anchorDay": 1,
+    "firstDay": "2026-08-31",
+    "lastDay": "2027-06-22",
+    "offDays": "2026-09-07, 2026-10-12, 2026-12-21..2027-01-04, 2027-03-01..2027-03-05",
+    "overrides": "",
+    "schedule": "1: English, Math, Gym\n2: French, Science, Music\n3: English, Math, Library\n4: French, Art, Gym\n5: English, Math, Ethics",
+    "bring": "Gym: running shoes & gym clothes\nLibrary: library books\nMusic: recorder",
+    "remindKeywords": "test|quiz|exam|dict[\u00e9e]e|spelling|library|due|project|presentation|field trip|photo|bring|show and tell",
+    "switchHour": 15,
+    "checkClosures": false,
+    "closureUrl": "",
+    "accentColor": "#db2777"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 420
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "personName": {
+        "type": "string",
+        "title": "Calendar person",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "Reminders come from this person's calendar."
+      },
+      "schoolName": {
+        "type": "string",
+        "title": "School name",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "As written on the board's closure list, e.g. Pierre Elliott Trudeau"
+      },
+      "schedule": {
+        "type": "string",
+        "title": "Classes by day",
+        "ui:widget": "textarea",
+        "ui:group": "Schedule",
+        "description": "One line per cycle day: 1: English, Math, Gym"
+      },
+      "bring": {
+        "type": "string",
+        "title": "What to bring",
+        "ui:widget": "textarea",
+        "ui:group": "Schedule",
+        "description": "Class: item \u2014 shown on days with that class"
+      },
+      "anchorDate": {
+        "type": "string",
+        "title": "A known date\u2026",
+        "ui:widget": "text",
+        "ui:group": "Cycle",
+        "description": "YYYY-MM-DD"
+      },
+      "anchorDay": {
+        "type": "number",
+        "title": "\u2026was cycle day",
+        "ui:widget": "text",
+        "ui:group": "Cycle"
+      },
+      "cycleLength": {
+        "type": "number",
+        "title": "Days in the cycle",
+        "ui:widget": "text",
+        "ui:group": "Cycle"
+      },
+      "firstDay": {
+        "type": "string",
+        "title": "First day of school",
+        "ui:widget": "text",
+        "ui:group": "Cycle"
+      },
+      "lastDay": {
+        "type": "string",
+        "title": "Last day of school",
+        "ui:widget": "text",
+        "ui:group": "Cycle"
+      },
+      "offDays": {
+        "type": "string",
+        "title": "No-school days",
+        "ui:widget": "textarea",
+        "ui:group": "Cycle",
+        "description": "Dates or ranges (YYYY-MM-DD..YYYY-MM-DD), comma separated. Calendar events like 'Ped day' or 'No school' are skipped too."
+      },
+      "overrides": {
+        "type": "string",
+        "title": "Corrections",
+        "ui:widget": "text",
+        "ui:group": "Cycle",
+        "description": "e.g. 2027-01-12=3 if the school says so"
+      },
+      "remindKeywords": {
+        "type": "string",
+        "title": "Reminder words",
+        "ui:widget": "text",
+        "ui:group": "Reminders",
+        "description": "Calendar events matching these show under Coming up"
+      },
+      "switchHour": {
+        "type": "number",
+        "title": "Show tomorrow after (hour)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 10,
+        "maximum": 22,
+        "ui:step": 1
+      },
+      "checkClosures": {
+        "type": "boolean",
+        "title": "Check storm closures",
+        "ui:widget": "toggle",
+        "ui:group": "Closures"
+      },
+      "closureUrl": {
+        "type": "string",
+        "title": "Closure page",
+        "description": "Your school board's closures page. Add its domain to allowedDomains in manifest.json before building. Empty = no closure check.",
+        "ui:widget": "text",
+        "ui:group": "Closures"
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [
+    "calendar"
+  ],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "storage"
+  ],
+  "allowedDomains": [
+    "www.example.org"
+  ]
+}

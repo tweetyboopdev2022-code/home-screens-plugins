@@ -1,0 +1,61 @@
+{
+  "id": "countdowns",
+  "name": "Countdowns",
+  "version": "1.1.2",
+  "description": "Big 'days until' tiles for holidays, birthdays and trips.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "countdowns",
+  "category": "Time & Date",
+  "icon": "Hourglass",
+  "defaultConfig": {
+    "items": "Halloween|10-31\nChristmas|12-25\nNew Year|01-01",
+    "max": 3,
+    "accentColor": "#b45309"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 240
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "string",
+        "title": "Countdowns",
+        "ui:widget": "textarea",
+        "ui:group": "Content",
+        "description": "One per line: Name|MM-DD (every year) or Name|YYYY-MM-DD"
+      },
+      "max": {
+        "type": "number",
+        "title": "Tiles shown",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 1,
+        "maximum": 4,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [],
+  "prefetchUrl": null,
+  "permissions": [
+    "storage"
+  ]
+}

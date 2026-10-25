@@ -1,0 +1,104 @@
+{
+  "id": "day-ahead",
+  "name": "Day Ahead",
+  "version": "1.1.0",
+  "description": "The weather for your next calendar event and when your last one ends, hour by hour through the day — with heads-ups for umbrella, frost on the windshield, slippery roads and wind.",
+  "author": "tweetyboopdev2022-code",
+  "license": "MIT",
+  "minAppVersion": "1.7.1",
+  "moduleType": "day-ahead",
+  "category": "Weather",
+  "icon": "CloudSun",
+  "defaultConfig": {
+    "leaveTime": "07:30",
+    "returnTime": "17:30",
+    "fromHour": 6,
+    "toHour": 22,
+    "switchToTomorrowAt": 20,
+    "accentColor": "#059669",
+    "personName": "Alex"
+  },
+  "defaultSize": {
+    "w": 1000,
+    "h": 440
+  },
+  "defaultStyle": {
+    "fontSize": 18,
+    "padding": 28,
+    "borderRadius": 28
+  },
+  "configSchema": {
+    "type": "object",
+    "properties": {
+      "personName": {
+        "type": "string",
+        "title": "Calendar person",
+        "description": "Next event and last event come from this person's calendar (Settings → Calendar → People). Empty = all calendars.",
+        "ui:widget": "text",
+        "ui:group": "Content"
+      },
+      "leaveTime": {
+        "type": "string",
+        "title": "Usual leave time (no events)",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "HH:MM"
+      },
+      "returnTime": {
+        "type": "string",
+        "title": "Usual home time (no events)",
+        "ui:widget": "text",
+        "ui:group": "Content",
+        "description": "HH:MM"
+      },
+      "fromHour": {
+        "type": "number",
+        "title": "Timeline starts (hour)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 0,
+        "maximum": 12,
+        "ui:step": 1
+      },
+      "toHour": {
+        "type": "number",
+        "title": "Timeline ends (hour)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 14,
+        "maximum": 24,
+        "ui:step": 1
+      },
+      "switchToTomorrowAt": {
+        "type": "number",
+        "title": "Show tomorrow after (hour)",
+        "ui:widget": "slider",
+        "ui:group": "Content",
+        "minimum": 12,
+        "maximum": 24,
+        "ui:step": 1
+      },
+      "accentColor": {
+        "type": "string",
+        "title": "Accent colour",
+        "ui:widget": "color",
+        "ui:group": "Look"
+      }
+    }
+  },
+  "exports": {
+    "component": "default"
+  },
+  "dataRequirements": [
+    "calendar",
+    "location"
+  ],
+  "prefetchUrl": null,
+  "permissions": [
+    "network",
+    "storage"
+  ],
+  "allowedDomains": [
+    "api.open-meteo.com"
+  ]
+}

@@ -1,0 +1,211 @@
+/**
+ * Type declarations for the Home Screens plugin SDK.
+ * These globals are provided by the host app at runtime.
+ *
+ * The host exposes window.__HS_SDK__ with UI components, data hooks,
+ * caching, event emission, host settings, and a server-side proxy.
+ * Editor-only members (AccordionSection, useModuleConfig) are added
+ * in the editor layout and may be undefined on the display page.
+ */
+
+import type { FC, ReactNode } from 'react';
+
+// ─── Supporting Types ────────────────────────────────────────────────────────
+
+/** Provider health status reported to the host editor inspector.
+ *  `since` is the epoch ms of the FIRST failure of the current outage and
+ *  stays fixed for the whole outage, so the host can show how long the
+ *  provider has been down. Absent on hosts older than provider-health
+ *  reporting — every caller must optional-chain the SDK method. */
+export type ProviderHealthStatus =
+  | { ok: true }
+  | { ok: false; message: string; since: number };
+
+/** Host settings snapshot — read-only */
+interface HostSettings {
+  timezone: string;
+  units: 'metric' | 'imperial';
+  latitude: number | null;
+  longitude: number | null;
+  displayWidth: number;
+  displayHeight: number;
+  appVersion: string;
+}
+
+/** Plugin events emitted to the host */
+type PluginEvent =
+  | { type: 'navigate'; direction: 'next' | 'prev' | 'screen'; screenIndex?: number }
+  | { type: 'refresh' }
+  | { type: 'log'; level: 'info' | 'warn' | 'error'; message: string };
+
+/** Server-side proxy options */
+interface PluginFetchOptions {
+  url: string;
+  method?: string;
+  headers?: Record<string, string>;
+  payload?: string;
+  secretInjections?: {
+    header?: Record<string, string>;
+    query?: Record<string, string>;
+  };
+  cacheTtlMs?: number;
+}
+
+// ─── Component Props ─────────────────────────────────────────────────────────
+
+interface SliderProps {
+  label: string;
+  value: number;
+  min: number;
+  max: number;
+  step?: number;
+  onChange: (value: number) => void;
+}
+
+interface ToggleProps {
+  label: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}
+
+interface ColorPickerProps {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+}
+
+interface SectionHeadingProps {
+  children: ReactNode;
+}
+
+interface ModuleLoadingStateProps {
+  loading?: boolean;
+  error?: string;
+  children: ReactNode;
+}
+
+/** AccordionSection component props (editor-only) */
+interface AccordionSectionProps {
+  title: string;
+  defaultOpen?: boolean;
+  children: ReactNode;
+}
+
+/** useModuleConfig return type (editor-only) */
+interface ModuleConfigResult<T> {
+  config: T;
+  set: (updates: Partial<T>) => void;
+}
+
+// ─── Global Declarations ─────────────────────────────────────────────────────
+
+declare global {
+  interface Window {
+    /** Provided by the host — do not bundle React */
+    React: typeof import('react');
+    /** Provided by the host — do not bundle ReactDOM */
+    ReactDOM: typeof import('react-dom');
+
+    /** Shared SDK from the host app. Optional because the plugin can be
+     *  loaded in environments where the SDK hasn't initialised yet (tests,
+     *  standalone bundle previews) — every access should guard with `?.`. */
+    __HS_SDK__?: {
+      // ── CSS Classes ──
+      /** Standard input styling for config panels */
+      INPUT_CLASS: string;
+      /** Nested/secondary input styling for config panels */
+      NESTED_INPUT_CLASS: string;
+
+      // ── UI Components ──
+      /** Numeric range slider with label */
+      Slider: FC<SliderProps>;
+      /** Color picker with label */
+      ColorPicker: FC<ColorPickerProps>;
+      /** Boolean toggle switch with label */
+      Toggle: FC<ToggleProps>;
+      /** Section heading for grouping config fields */
+      SectionHeading: FC<SectionHeadingProps>;
+      /** Loading/error state wrapper for plugin content */
+      ModuleLoadingState: FC<ModuleLoadingStateProps>;
+
+      // ── Data Fetching ──
+      /** React hook: polls a URL at an interval, returns [data | null, error | null] */
+      useFetchData: <T>(url: string | null, refreshMs: number) => [T | null, string | null];
+
+      // ── Display Cache ──
+      /** In-memory cache for data between renders and screen transitions */
+      displayCache: {
+        /** Returns the stored value wrapped in {data, stale} — stale entries
+         *  are returned (stale: true), never dropped; null only before the
+         *  first set for the key. */
+        get: (key: string) => { data: unknown; stale: boolean } | null;
+        set: (key: string, value: unknown, ttlMs: number) => void;
+        prefetch: (url: string, ttlMs: number) => Promise<void>;
+      };
+
+      // ── I18n ──
+      /** Active BCP-47 locale tag (e.g. "de-DE"). */
+      locale?: string;
+      /** Look up a translation by dotted key; the `plugin:home-assistant.`
+       *  prefix resolves against this plugin's manifest `translations`
+       *  dictionary. Returns the raw key on any miss — call through
+       *  `tr()` (src/i18n.ts), which supplies the English fallback.
+       *  Absent on hosts older than plugin i18n. */
+      translate?: (key: string, vars?: Record<string, string | number>) => string;
+
+      // ── Host Settings ──
+      /** Read-only snapshot of global display settings */
+      getHostSettings: () => HostSettings;
+      /** Read-only snapshot of the plugin-level settings saved in the plugin
+       *  manager against the manifest's `settingsSchema`. Absent on hosts
+       *  older than the settings feature — guard every call. */
+      getPluginSettings?: (pluginId: string) => Record<string, unknown>;
+      /** Editor-only writer for plugin-level settings (merge semantics over
+       *  the current values). Present only in the editor on hosts that ship
+       *  inline plugin-settings editing — guard every call. */
+      setPluginSettings?: (
+        pluginId: string,
+        updates: Record<string, unknown>,
+      ) => Promise<{ ok: boolean; error?: string }>;
+
+      // ── Event Emitter ──
+      /** Emit events to the host (navigate, refresh, log) */
+      emit: (event: PluginEvent) => void;
+
+      // ── Server-Side Proxy ──
+      /** Fetch external APIs through the server-side proxy with optional secret injection */
+      pluginFetch: (pluginId: string, options: PluginFetchOptions) => Promise<Response>;
+
+      // ── Shared-State Bus ──
+      /** Publish a named state value for conditional module visibility (host ≥ the
+       *  release that ships the shared-state bus). Key is force-prefixed with
+       *  `plugin:<pluginId>:` by the host. Absent on older hosts — guard every call. */
+      publishState?: (pluginId: string, key: string, value: string) => void;
+      /** Clear a previously published key so conditions on it evaluate as
+       *  unknown again. Same namespace rules as publishState. Ships one host
+       *  release after publishState — guard every call. */
+      clearState?: (pluginId: string, key: string) => void;
+      /** Report this plugin's data-provider health to the host editor's
+       *  inspector. Call `{ ok: false, message, since }` when entering and
+       *  while remaining in an outage (`since` = epoch ms of that outage's
+       *  first failure, stable across the outage) and `{ ok: true }` once on
+       *  recovery. The absence of any report means healthy. `message` is
+       *  user-visible in the editor. Absent on older hosts — guard every call. */
+      reportProviderHealth?: (pluginId: string, status: ProviderHealthStatus) => void;
+
+      // ── Editor-Only (may be undefined on display page) ──
+      /** Accordion section wrapper for grouping config fields */
+      AccordionSection?: FC<AccordionSectionProps>;
+      /** Convenience hook for typed config access in custom ConfigSection components */
+      useModuleConfig?: <T = Record<string, unknown>>(
+        moduleId: string,
+        screenId: string,
+      ) => ModuleConfigResult<T>;
+    };
+
+    /** Plugin export target — set by the IIFE wrapper, read by the host loader */
+    __HS_PLUGIN__: Record<string, unknown>;
+  }
+}
+
+export {};
